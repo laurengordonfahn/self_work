@@ -94,9 +94,25 @@ end
 # insurance_checker
 # p @health_insurance_answer
 
+# THIS WON"T accumulate an array.
+def allergie_intake
+  puts "Please, list all allergies, when your list is complete type 'done'."
+  allergie_list = []
+  allergie = nil
+  until (allergie == "done" || allergie == "sunshine")
+    allergie = gets.chomp.downcase
+    allergie_list << allergie
+    if @allergie == "sunshine"
+      return puts "Probably a Vampire."
+    end
+  end
+   puts "Applicant's allergies #{allergie_list}"
+end
 
 def vampire_checker
-  if (@name == "Drake Cula" || @name == "Tu Fang")
+  if @allergie == "sunshine"
+    return "Probably a vampire."
+  elsif (@name == "Drake Cula" || @name == "Tu Fang")
     puts "Definitely a vampire."
   elsif (age_checker &&  (@garlic_bread_answer || @health_insurance_answer))
     puts "Probably not a vampire."
@@ -109,7 +125,6 @@ def vampire_checker
   end
 end
 
-
 def run_number
   puts "How many applicants are we interviewing today?"
   @number_applicants = gets.chomp.to_i
@@ -118,6 +133,7 @@ end
 # #run code- returns fixnum
 # run_number
 # p @number_applicants.class
+
 
 def question_run
   vampire_name
@@ -134,6 +150,7 @@ def question_checker_run
 
   #WHY DO I HAVE TO WRITE THIS ON SPEREATE LINES? and can't insert it?
   puts "The outcome of this interview..." 
+
   vampire_checker
 end
 
@@ -146,31 +163,21 @@ def run_loop
     applicant_refrence_number = (x + 1)
     puts "Applicant #{applicant_refrence_number} please answer the following questions"
     question_run
-    # allergie_intake
+    allergie_intake
     question_checker_run
     puts "Thank you #{@name} your Application refrence number is #{applicant_refrence_number}."
   end
 end
 #driver code 
     
-# run_loop
 
-# THIS WON"T accumulate an array.
-def allergie_intake
-  puts "Please, list all allergies, when your list is complete type 'done'."
-  until (@allergie == "done" || @allergie == "sunshine")
-    @allergie = gets.chomp.downcase
-    allergie_list = []
-    allergie_list << @allergie
-    if @allergie == "sunshine"
-      return puts "Probably a Vampire."
-    end
-  end
-   puts allergie_list
-end
+
+
+
+run_loop
 
 #run code
-allergie_intake
+# allergie_intake
 
 
 
