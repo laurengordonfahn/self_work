@@ -108,7 +108,8 @@ def allergie_intake
   end
    puts "Applicant's allergies #{allergie_list}"
 end
-
+ 
+#Needed ti fix the first line 114 of vampire_checker doesn't run
 def vampire_checker
   if @allergie == "sunshine"
     return "Probably a vampire."
