@@ -5,6 +5,7 @@ class Vampire
   	@prompt = prompt
     @name = nil
     @age = nil
+    @allergie = nil
     # @......
   end
 
@@ -41,6 +42,7 @@ class Vampire
     vampire_birth_year
     garlic_bread
     health_insurance
+    allergie_checker
   end
   
   
@@ -81,7 +83,7 @@ class Vampire
   def vampire_checker
     if (age_checker && (garlic_bread_validator ||       insurance_validator))
       puts "Probably not a vampire"
-    elsif (age_checker && (garlic_bread_validator || insurance_validator))
+    elsif ((age_checker && (garlic_bread_validator || insurance_validator)) || (allergie == "sunshine"))
       puts "Probably a vampire"
     elsif (age_checker && garlic_bread_validator && insurance_validator)
       puts "Almost certainly a vampire."
@@ -97,15 +99,18 @@ end
 
 def current_year
    puts "What year is it?"
-   gets.chomp
+   @year = gets.chomp.to_i
 end
 
 #this takes the place of run_program where you can extend it to the number of people you want to question
 
 def run_program_with_loop
+  puts "How many applicants will be intaked today? (Integer answer)"
+  number_times_run = gets.chomp
+  number_times_run = number_times_run.to_i
 	year = current_year
 	array = []
-	2.times do |x|
+	number_times_run.times do |x|
 		applicant = Vampire.new(year, "Applicant #{x}")
 		array << applicant
 		applicant.vampire_questions
@@ -115,6 +120,20 @@ def run_program_with_loop
 		applicant.vampire_checker
 	end
 end
+
+def allergie_checker
+  puts "Please, type your allergies below, type 'done' when your list is complete."
+  until allergie == "done" 
+    @allergie = gets.chomp.downcase
+    allergie_array = []
+    puts "Your allergies #{allergie_array.push(allergie)}"
+    if allergie == "sunshine"
+      return 
+    end
+  end
+end
+
+  
 
 
 
