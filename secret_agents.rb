@@ -44,7 +44,7 @@ def encrypt(string)
 
 		puts "This is the new string #{new_string}"
 		
-	
+		new_string
 
 end
 
@@ -75,6 +75,60 @@ end
 # encrypt("zen hill")
 
 #add down case- works
-encrypt("String")
+# encrypt("String")
 
+
+# decryption - method that takes a string
+# find the length of a string
+# find the max index of the string
+# loop through and call each letter in the string independently using the max index
+# compare that letter to the the string of the alphabet
+# get the index of that letter in the alphebet string and subtract 1 and call that letter from the alphabet string
+# fringe cases such as a and space must be cared for and all should be downcase
+def decrypt(string)
+	string = string.downcase
+
+	#test string downcase works
+	puts string
+
+	string_length = string.length
+	string_max_index = string_length - 1
+
+	alphabete_string = "abcdefghijklmnopqrstuvwxyz"
+
+
+	#test if alphabet is correct length
+	puts alphabete_string.length
+
+	counter = 0
+
+	new_string = ""
+	until counter > string_max_index
+		letter_called = string[counter]
+			if letter_called == "a"
+				new_letter = "z"
+			elsif letter_called == " "
+				new_letter = " "
+			else
+				letter_called_index = alphabete_string.index(letter_called)
+				new_letter_index = letter_called_index - 1
+				new_letter = alphabete_string[new_letter_index]
+			end
+	
+		new_string = new_string + new_letter
+		counter +=1
+	end
+	puts new_string
+
+	new_string
+end
+
+
+
+#driver code for decryption - works
+# decrypt("Atlas Bone")
+
+
+#nested driver code revealed that since I ended with a puts statement what was returned at first was nil and that created the error nil nomethod
+decrypt(encrypt("swordfish"))
 
