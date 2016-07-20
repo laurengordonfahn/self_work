@@ -137,12 +137,12 @@ end
 def run_program
 	puts "Would you like to decrypt or encrypt a password? ('decrypt' or 'encrypt')"
 	request_program = gets.chomp.downcase
-	if (request_program == "decyrpt" || request_program == "encrypt")
-		puts "What password would you like to run through #{request_program}?"
-		password = gets.chomp
-	else
+	until (request_program == "decrypt" || request_program == "encrypt")
 		puts "Your request was not understood please type again: 'Would you like to decrypt or encrypt a password? ('decrypt' or 'encrypt')'"
+		request_program = gets.chomp
 	end
+	puts "What password would you like to run through #{request_program}?"
+	password = gets.chomp
 
 	if request_program == "decrypt"
 		decrypt(password)
