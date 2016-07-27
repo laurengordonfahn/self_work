@@ -9,8 +9,9 @@ end
 # puts swap_name("Lauren", "Gordon")
 # puts swap_name("Lauren", "Gordon").class
 
-#take each index of the name array and split it into letters array
-#create an array for vowels and an array for consenents
+#psuedo code
+#take each index of the name array and split it into letters array (lines 21-23)
+#create an array for vowels and an array for consenents (lines25-27)
 # create block that checks if each name letter array contains each vowel
 	# use an until loop to go through each letter array and a .each block to see if 
 	#each vowel is contained in the array element location
@@ -18,32 +19,49 @@ end
 
 
 def split_name(swap_name)
-	letters0 = name[0].split("")
-	letters1 = name[1].split("")
-
-	# vowels = ["a", "e", "i", "o", "u" ]
-	# consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", 
-	# 	"s", "t", "v", "w", "x", "y", "z"]
-	vowel_replaced_letters0 = []
+	#this takes a string and makes an array of each name
+	letters0 = swap_name[0].split("")
+	letters1 = swap_name[1].split("")
+	# puts letters0.class
+	vowels = ["a", "e", "i", "o", "u" ]
+	consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", 
+		"s", "t", "v", "w", "x", "y", "z"]
+	#create an empty array to be filled with the new letters out side the loop so it can be filled stationary? 
+	vowels_replaced_letters0 = []
 	x = 0
-	until x > name.length
+	#I would like to know if it is possible to embed two loops one vowel one for letters?
+	until x > letters0.length
 		vowels.each do |vowel|
-			return name[x].inculde?(vowel)
-			if return == true
-				name[x] = vowels. index(vowels.index(vowel) + 1)
-				vowels_replaced_letters0 << name[x]
+
+			#check to see if each vowel is in the letters array
+			if letters0.include?(vowel) == true
+				#if the vowel is in the letters array than we want to find the index at which it is in the letters array
+				vowel_location_in_letters = letters0.index(vowel)
+				# find vowels index in the VOWELS array and add 1 to find new vowel letter 
+				new_vowel_index = (vowels.index(vowel) + 1)
+				# find new vowel as the next vowel in the VOWELS array
+				new_vowel = vowels[new_vowel_index]
+				#replace the old vowel with the new vowel in the same index location in letters array
+				vowels_replaced_letters0 << new_vowel
 			else
-				vowels_replaced_letters0 << name[x]
+				#this should take anything that is not a vowel and put the same letter in its location
+				vowels_replaced_letters0 << letters0[x]
 			end
 		end
 
 		x +=1
 	end
+	puts vowels_replaced_letters0
 end
 
-puts split_name(swap_name("lauren", "gordon")
+# Driver code lines 1-23This driver code works but only returns letters1 which is the last line so expected?
+# puts split_name(swap_name("Lauren", "Gordon"))
 
+# This driver code for lines 1-23 doesn't run saying 0 arguments for 2 how do I do this
+# puts split_name(swap_name)
 
+#Driver code for lines 26-44
+split_name(swap_name("Lauren", "Gordon"))
 
 
 
