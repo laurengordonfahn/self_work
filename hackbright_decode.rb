@@ -36,21 +36,20 @@ def decode(string)
 		if  orginal_element == "0"
 			hash_of_int[index_counter] = orginal_element.to_i
 		elsif orginal_element.to_i != "0"
-			if int_array.include?(orginal_element.to_i)
-				hash_of_int[index_counter] = orginal_element.to_i
-			end
+			hash_of_int[index_counter] = orginal_element.to_i
 		else
-			hash_of_int[index_counter]=orginal_element
+			hash_of_int[index_counter] = orginal_element
 			hash_of_int.delete(index_counter)
 		end
-		
+
 	end
+
 	# puts statements are driver code to check that we are populating the <hash_of_int>
 		puts hash_of_int.class
 		puts "-----"
 		puts hash_of_int.keys
 		puts "-----"
-		puts hash_of_int.values
+		puts hash_of_int.values	
 	
 	# 	array_int_keys = hash_of_int.keys
 	# 	x = 0
