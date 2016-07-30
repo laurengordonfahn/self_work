@@ -1,41 +1,69 @@
 def decode(string)
+	#take the input -string- and split it into elements in string add it to an -array-
 	string_array = string.split("")
+
+	#create an -array- of all singleton numbers to be itterated through as a check for integers
 	int_array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-	number_element = 0
-	index_counter = -1
-	hash_of_int = {}
-	hash_of_elements = {}
-	string_of_int = ""
-	array_keys = []
-	string_of_int_array = []
-	string_array.each do |element|
-		if int_array.include?(element)
-			element = element
-		else
-			element = element
-		end
-		index_counter = index_counter + 1
-		hash_of_int[index_counter] = element
-
-		hash_of_elements.each do |index_counter, element| 
-			if element.inculde?(int_array)
-				hash_of_int[index_counter] = element_index
-			end
-		end
+	#lay out all variables to be used inside double loop
+	orginal_element = 0 # <orginal_element> will hold all the <elements> from the block after they pass in order to feed our hash
+	index_counter = -1 # <index_counter> will increase by 1 each round of the outter do block in order to create the index of element
+	hash_of_elements = {} # <hash_of_elements> -hash- will hold keys = index of elements, values = the elements from the oringal <string_array>
 	
-		array_int_keys = hash_of_int.keys
-		x = 0
-		until array_keys[(x + 1)] != (array_keys[x] + 1)
-			array_int_keys.each do |int|
-				string_of_int = string_of_int + array_keys[x] 
-				string_of_int_array << string_of_int
+	hash_of_int = {} # <hash_or_int>  -hash- will hold keys = the index of integer elements, values = the integer elements from the oringal <string_array>
+	
+	string_of_int = "" # <string_of_int> -string- will hold the string of the full integer in order to assess if there is a 10s, 100s, 1000s etc place number in the decode string
+	array_int_keys = [] # <array_int_keys> -array- will hold all the keys from the <hash_of_elements> that have values that are -integers-
+	string_of_int_array = []  # <string_of_int_array> -array- will hold all the strings of the 10s, 100s, 100s place numbers from the decode string>
+
+	#1st do loop goes through each <element> (a -string- of 1 character letter or number) in the string_array to generate an <index_counter> for each element and feed the hash_of_elements
+	string_array.each do |element|
+		orginal_element = element
+		index_counter = index_counter + 1
+		hash_of_elements[index_counter] = orginal_element
+	end
+	# puts statements are driver code to check that we are populating the <hash_of_elements>
+		puts hash_of_elements.class
+		puts "-----"
+		puts hash_of_elements.keys
+		puts "-----"
+		puts hash_of_elements.values
+		puts "------"
+
+	#2nd do loop goes through each key-value pair in the hash_of_elements 
+	#2nd do loop's if statement checks if the orginal_element is inculded in the int_array if it is that <orginal_element> and its <index_counter> populates <hash_or_int>
+	hash_of_elements.each do |index_counter, orginal_element| 
+		if  orginal_element == "0"
+			hash_of_int[index_counter] = orginal_element.to_i
+		elsif orginal_element.to_i != "0"
+			if int_array.include?(orginal_element.to_i)
+				hash_of_int[index_counter] = orginal_element.to_i
 			end
-			x += 1
+		else
+			hash_of_int[index_counter].delete
 		end
 	end
+	# puts statements are driver code to check that we are populating the <hash_of_int>
+		puts hash_of_int.class
+		puts "-----"
+		puts hash_of_int.keys
+		puts "-----"
+		puts hash_of_int.values
+	
+	# 	array_int_keys = hash_of_int.keys
+	# 	x = 0
+	# 	until array_keys[(x + 1)] != (array_keys[x] + 1)
+	# 		array_int_keys.each do |int|
+	# 			string_of_int = string_of_int + array_keys[x] 
+	# 			string_of_int_array << string_of_int
+	# 		end
+	# 		x += 1
+	# 	end
+	# end
 end
-puts decode("0h2abi")
+decode("0h2abi")
+
+
 
 
 
