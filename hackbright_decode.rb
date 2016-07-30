@@ -37,6 +37,8 @@ def decode(string)
 			integer_element = element.to_i
 			element_index = array_of_string.index(element)
 		else
+			integer_element = element_index
+			element_index = array_of_string.index(element)
 		end
 	end
 	integer_hash[element_index] = integer_element
