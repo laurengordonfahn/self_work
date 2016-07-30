@@ -88,10 +88,11 @@ def decode(string)
 	string_array.each do |element|
 		index_counter = index_counter + 1
 		if is_digit?(element)
-		nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
+			nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
 		end
 
 	end 
+	
 	return nearly_new_string
 end
 
