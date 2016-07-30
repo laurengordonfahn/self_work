@@ -40,18 +40,24 @@ def decode(string)
 
 	int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
-	int_gage = true
+	int_gage = false
 	nearly_new_string = ""
+	index_counter = -1
 
 	string_array.each do |element|
-		if int_string_array.inculde?(element)
+		if int_string_array.include?(element)
 			int_gage = true
-			nearly_new_string = nearly_new_string
 		else 
 			int_gage = false
-			nearly_new_string = nearly_new_string + element
 		end
-	end 
+	index_counter = index_counter + 1
 
+		if int_gage == true
+			nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
+		end
+
+	end 
 	return nearly_new_string
 end
+
+puts decode("1aH2abi!")
