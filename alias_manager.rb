@@ -26,8 +26,10 @@ def split_name(swap_name)
 	vowels = ["a", "e", "i", "o", "u" ]
 	consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", 
 		"s", "t", "v", "w", "x", "y", "z"]
-	#create an empty array to be filled with the new letters out side the loop so it can be filled stationary? 
-	vowels_replaced_letters0 = []
+	
+	new_letters0_array = []
+	vowel_location_in_letters = "".to_i
+	new_vowel = ""
 	x = 0
 	#I would like to know if it is possible to embed two loops one vowel one for letters?
 	until x > letters0.length
@@ -42,16 +44,17 @@ def split_name(swap_name)
 				# find new vowel as the next vowel in the VOWELS array
 				new_vowel = vowels[new_vowel_index]
 				#replace the old vowel with the new vowel in the same index location in letters array
-				vowels_replaced_letters0 << new_vowel
-			else
-				#this should take anything that is not a vowel and put the same letter in its location
-				vowels_replaced_letters0 << letters0[x]
+				letters0.delete(vowel)
+				
 			end
+			#some how this is an infinte loop and I don't know why, 
+			puts new_letters0_array = letters0.insert(vowel_location_in_letters, new_vowel)
 		end
-
+		
+		
 		x +=1
 	end
-	puts vowels_replaced_letters0
+	
 end
 
 # Driver code lines 1-23This driver code works but only returns letters1 which is the last line so expected?
@@ -61,7 +64,7 @@ end
 # puts split_name(swap_name)
 
 #Driver code for lines 26-44
-split_name(swap_name("Lauren", "Gordon"))
+puts split_name(swap_name("Lauren", "Gordon"))
 
 
 
