@@ -62,18 +62,19 @@
 
 # puts decode("1aH2abi4abcd!")
 
-def is_digit?(string)
-string_array = string.split("")
+def is_digit?(string_length_1)
+
 int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 int_gage = false
-	string_array.each do |element|
-		if int_string_array.include?(element)
-			int_gage = true
-		else 
-			int_gage = false
-		end
+	if int_string_array.include?(string_length_1)
+		int_gage = true
 	end
+	return int_gage
 end
+
+puts is_digit?("a")
+puts is_digit?("1")
+puts is_digit?("B")
 
 def decode(string)
 	string_array = string.split("")
@@ -85,11 +86,7 @@ def decode(string)
 	index_counter = -1
 
 	string_array.each do |element|
-		if int_string_array.include?(element)
-			int_gage = true
-		else 
-			int_gage = false
-		end
+		
 	index_counter = index_counter + 1
 
 		if int_gage == true
