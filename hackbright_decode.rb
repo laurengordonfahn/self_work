@@ -53,7 +53,7 @@ def decode(string)
 	
 	# 	array_int_keys = hash_of_int.keys
 	# 	x = 0
-	# 	until array_keys[(x + 1)] != (array_keys[x] + 1)
+	# 	until array_int_keys[(x + 1)] != (array_keys[x] + 1)
 	# 		array_int_keys.each do |int|
 	# 			string_of_int = string_of_int + array_keys[x] 
 	# 			string_of_int_array << string_of_int
