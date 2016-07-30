@@ -32,14 +32,15 @@ def decode(string)
 	array_of_string.each do |element|
 		if element == "0"
 			integer_element = 0
-			element_index = array_of_string.index(element)
+			
 		elsif element.to_i != 0
 			integer_element = element.to_i
-			element_index = array_of_string.index(element)
+			
 		else
 			integer_element = element_index
-			element_index = array_of_string.index(element)
+			
 		end
+		integer_index = integer_index + 1
 	end
 	integer_hash[element_index] = integer_element
 end
