@@ -40,8 +40,10 @@ def decode(string)
 				hash_of_int[index_counter] = orginal_element.to_i
 			end
 		else
-			hash_of_int[index_counter].delete
+			hash_of_int[index_counter]=orginal_element
+			hash_of_int.delete(index_counter)
 		end
+		
 	end
 	# puts statements are driver code to check that we are populating the <hash_of_int>
 		puts hash_of_int.class
