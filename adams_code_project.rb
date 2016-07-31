@@ -77,25 +77,102 @@ puts is_digit?("a")
 puts is_digit?("1")
 puts is_digit?("B")
 
+# def decode(string)
+# 	string_array = string.split("")
+
+# 	int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# 	nearly_new_string = ""
+# 	index_counter = -1
+
+# 	string_array.each do |element|
+# 		index_counter = index_counter + 1
+# 		if is_digit?(element)
+# 			nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
+# 		end
+
+# 	end 
+
+# 	return nearly_new_string
+# end
+
+# def is_digit?(string_length_1)
+
+# 	int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# 	int_gage = false
+	
+# 	if int_string_array.include?(string_length_1)
+# 		int_gage = true
+# 	end
+# 	return int_gage
+# end
+
+# puts is_digit?("a")
+# puts is_digit?("1")
+# puts is_digit?("B")
+
+# def decode(string)
+# 	string_array = string.split("")
+
+# 	int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# 	nearly_new_string = ""
+# 	index_counter = -1
+
+# 	string_array.each do |element|
+# 		index_counter = index_counter + 1
+# 		if is_digit?(element)
+# 			nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
+# 		end
+
+# 	end 
+	
+# 	return nearly_new_string
+# end
+
+# puts decode("1aH2abi4abcd!")
+
+def big_int_acknowledger(string)
+	value = 0
+	string.each_char do |element|
+		value = value * 10
+		value = value + element.to_i
+	end
+	return value
+end
+
 def decode(string)
 	string_array = string.split("")
 
-	int_string_array = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-
 	nearly_new_string = ""
-	index_counter = -1
-
-	string_array.each do |element|
-		index_counter = index_counter + 1
-		if is_digit?(element)
-			nearly_new_string = nearly_new_string + string_array[(element.to_i + index_counter + 1)]
-		end
-
-	end 
+	number_string = ""
+	index_counter = 0
 	
+	until index_counter > string_array.length
+		until is_digit?(string_array[index_counter]) == false
+			string_array.each do |element|
+				
+				index_counter = index_counter + 1
+				
+				index_counter.times do |x|
+					number_string = number_string + string_array[x-1]
+				end
+
+
+			
+				
+			end
+
+		end
+		nearly_new_string = nearly_new_string + string_array[(index_counter - 1) + number_string.to_i]
+		string_array = string_array.drop(index_counter + number_string.to_i) 
+		
+		
+	end
 	return nearly_new_string
 end
 
-puts decode("1aH2abi4abcd!")
+
+puts decode("10abcdefghxiH21abcdefghxiabcdefghxiai4abcd!")
 
 
